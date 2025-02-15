@@ -1,6 +1,11 @@
-You are given the weights and values of items, and you need to put these items in a knapsack of capacity capacity to achieve the maximum total value in the knapsack. Each item is available in only one quantity.
+You are given the weights and values of items, and you need to put these items in a knapsack of capacity 
+capacity to achieve the maximum total value in the knapsack. Each item is available in only one quantity.
 
-In other words, you are given two integer arrays val[] and wt[], which represent the values and weights associated with items, respectively. You are also given an integer capacity, which represents the knapsack capacity. Your task is to find the maximum sum of values of a subset of val[] such that the sum of the weights of the corresponding subset is less than or equal to capacity. You cannot break an item; you must either pick the entire item or leave it (0-1 property).
+In other words, you are given two integer arrays val[] and wt[], which represent the values and weights 
+associated with items, respectively. You are also given an integer capacity, which represents the knapsack capacity. 
+Your task is to find the maximum sum of values of a subset of val[] such that the sum of the weights of the 
+corresponding subset is less than or equal to capacity. You cannot break an item; you must either pick the 
+entire item or leave it (0-1 property).
 
 //{ Driver Code Starts
 #include <bits/stdc++.h>
