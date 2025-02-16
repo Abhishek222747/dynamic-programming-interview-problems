@@ -3,7 +3,7 @@ consecutive houses and aims to maximize his total loot. Given an array, arr[] wh
 represents the amount of money in the i-th house, find the maximum amount he can loot.
 
 //here both dp[n-1] and dp[n] will work as former is 0 based indexing and latter is 1 based with no 
-changes except precomputed line
+//changes except precomputed line
 
 
 //{ Driver Code Starts
