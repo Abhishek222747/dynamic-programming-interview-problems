@@ -46,7 +46,55 @@ s consists of only lowercase English letters.
 
 
 
+//Trimmed solution
 
+class Solution {
+private:
+    // Memoization table
+    vector<vector<vector<int>>> dp;
+
+    int solve(string &s, int i, int j, int op) {
+        // Base cases
+        if (i > j) return 0;
+        if (i == j) return 1;
+
+        // Check memoization
+        if (dp[i][j][op] != -1) return dp[i][j][op];
+
+        int result = 0;
+        // If characters match, proceed inward
+        if (s[i] == s[j]) {
+            result = solve(s, i + 1, j - 1, op) + 2;
+        } else {
+            // Option 1: Skip one character from either end
+            result = max(solve(s, i + 1, j, op), solve(s, i, j - 1, op));
+
+            // Option 2: Replace characters if operations are available
+            if (op > 0) {
+                int diff= abs(s[i]-s[j]);
+                int cost = min(diff, 26-diff);
+                if (op >= cost) {
+                    result = max(result, solve(s, i + 1, j - 1, op - cost) + 2);
+                }
+            }
+        }
+
+        // Memoize result
+        return dp[i][j][op] = result;
+    }
+public:
+    int longestPalindromicSubsequence(string s, int k) {
+        int n= s.length();
+        dp = vector<vector<vector<int>>>(n, vector<vector<int>>(n, vector<int>(k + 1, -1)));
+        return solve(s,0,n-1,k);
+    }
+};
+
+
+
+
+
+//same as above but looking like a dumb shit code
 
 class Solution {
 private:
