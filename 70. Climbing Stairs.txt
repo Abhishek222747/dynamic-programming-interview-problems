@@ -1,0 +1,69 @@
+You are climbing a staircase. It takes n steps to reach the top.
+
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+ 
+//solution 1: Tabulation
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> dp(n+2);
+        dp[1]=1;
+        dp[2]=2;
+        for(int i=3; i<=n; i++){
+            dp[i]=dp[i-1]+dp[i-2];
+        } 
+        return dp[n];     
+    }
+};
+
+
+//solution 2: Tabulation without space
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n<=2) return n;
+        int a=1;
+        int b=2;
+        int curr;
+        for(int i=3; i<=n; i++){
+            curr= a+b;
+            a=b;
+            b=curr;
+        }  
+        return curr; 
+    }
+};
+
+
+//solution 3: Recursion
+
+class Solution {
+public:
+    int climbStairs(int n) {
+        if(n<=2) return n;
+        return climbStairs(n-1)+climbStairs(n-2);
+    }
+};
+
+
+//solution 4: Memoization
+
+class Solution {
+private:
+    vector<int> memo;
+public:
+    int climb(int n){
+        if(n<=2) return n;
+        if(memo[n]!=0) return memo[n];
+        memo[n]= climb(n-1)+climb(n-2);
+        return memo[n];
+    }
+    int climbStairs(int n) {
+        if(n<=2) return n;
+        memo.resize(n+1,0);
+        return climb(n);
+    }
+};
